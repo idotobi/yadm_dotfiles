@@ -34,6 +34,10 @@ trap 'timer_start' DEBUG
 # log all the commands not run as root
 ## https://spin.atomicobject.com/2016/05/28/log-bash-history/
 function log_line {
+  if [ ! -d ".logs" ]
+  then
+    mkdir .logs
+  fi
   if [ "$(id -u)" -eq 0 ]; then
     exit 1
   fi
@@ -96,4 +100,9 @@ eval $(thefuck --alias)
 # Set ccache as default
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
-python ~/scripts/quote_of_the_day.py
+
+quotes_script="~/scripts/quote_of_the_day.py"
+if [ -d $quotes_script ]
+then
+  python ~/scripts/quote_of_the_day.py
+fi
