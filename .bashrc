@@ -110,3 +110,5 @@ if [ -d $quotes_script ]
 then
   python ~/scripts/quote_of_the_day.py
 fi
+
+eval "$(starship init bash)"
