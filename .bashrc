@@ -13,7 +13,7 @@ alias ls='ls --color=auto'
 export EDITOR=nvim
 export VISUAL=nvim
 function dgit {
-  git --git-dir=${HOME}/.dotfiles_git/ --work-tree=${HOME} "$@"
+  git --git-dir="${HOME}/.dotfiles_git/" --work-tree="${HOME}" "$@"
 }
 
 export PS1='\[\033[32m\][\u@\h]:\[\033[01;34m\]$(echo "$(dirname "\w")"|sed -e "s;\(/.\)[^/]*;\1;g")/$(basename "$PWD") $\[\033[00m\] '
@@ -29,14 +29,22 @@ function timer_stop {
   unset timer
 }
 
+# optionally source File
+function optional_source {
+  source="$1"
+  # shellcheck source=/dev/null
+  [[ -s "$source" ]] && source "$source"
+}
+
 trap 'timer_start' DEBUG
 
 # log all the commands not run as root
 ## https://spin.atomicobject.com/2016/05/28/log-bash-history/
+log_dir="${HOME}/.logs"
 function log_line {
-  if [ ! -d ".logs" ]
+  if [ ! -d "$log_dir" ]
   then
-    mkdir .logs
+    mkdir "$log_dir"
   fi
   if [ "$(id -u)" -eq 0 ]; then
     exit 1
@@ -45,16 +53,15 @@ function log_line {
   history_line="$(history 1 | cut -d " " -f5-)"
 
   line="$command_date [${timer_show}s]:$(pwd) \$ $history_line"
-  echo "$line" >> "${HOME}/.logs/bash-history-$(date "+%Y-%m-%d").log"
+  echo "$line" >> "${log_dir}/bash-history-$(date "+%Y-%m-%d").log"
 }
 
 export PROMPT_COMMAND='timer_stop; log_line'
 
 export PATH=$PATH:~/bin:~/.local/bin:~/scripts
 
-if [ -f /usr/share/bash-completion/bash_completion ]; then
- source /usr/share/bash-completion/bash_completion
-fi
+
+optional_source /usr/share/bash-completion/bash_completion
 
 function vim {
   nvim "$@"
@@ -72,15 +79,13 @@ export FZF_DEFAULT_OPTS='--preview="
     bat --style=numbers --color=always {} | head -100
   fi
 "'
-if [ -f /usr/share/fzf/key-bindings.bash ]; then
-  source /usr/share/fzf/key-bindings.bash
-fi
-if [ -f /usr/share/fzf/completion.bash ]; then
-  source /usr/share/fzf/completion.bash
-fi
+
+optional_source /usr/share/fzf/key-bindings.bash
+optional_source /usr/share/fzf/completion.bash
 
 
 # Import the nix profile Environment Variables if nix is installed for the user
+# shellcheck source=/dev/null
 nix-pill() { source "$HOME/.nix-profile/etc/profile.d/nix.sh"; }
 
 svn-repair() { mv -n -- "$2" "$1" && svn mv -- "$1" "$2"; }
@@ -99,16 +104,33 @@ function bats-all {
 
 # activate the fuck 
 # https://github.com/nvbn/thefuck
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 
 # Set ccache as default
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
 
-quotes_script="~/scripts/quote_of_the_day.py"
-if [ -d $quotes_script ]
+quotes_script="$HOME/scripts/quote_of_the_day.py"
+if [ -d "$quotes_script" ]
 then
   python ~/scripts/quote_of_the_day.py
 fi
 
+# starship
 eval "$(starship init bash)"
+# navi
+eval "$(navi widget bash)"
+source $HOME/.cargo/env
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+optional_source "$NVM_DIR/nvm.sh"  # This loads nvm
+optional_source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Enable gradlew autocompletion
+# see https://github.com/gradle/gradle-completion
+optional_source "$HOME/bash_completion.d/gradle-completion.bash"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+optional_source "$HOME/.sdkman/bin/sdkman-init.sh"
