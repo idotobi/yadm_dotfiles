@@ -120,7 +120,7 @@ fi
 eval "$(starship init bash)"
 # navi
 eval "$(navi widget bash)"
-source $HOME/.cargo/env
+optional_source "$HOME/.cargo/env"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
@@ -136,4 +136,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 optional_source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Source general completions
-for f in "$HOME"/.bash_completions/*.sh; do source "$f"; done;
+completions_folder="$HOME/.bash_completions"
+if [ -d "$completions_folder" ]
+then
+  for f in "$completions_folder"/*.sh; do source "$f"; done;
+fi
