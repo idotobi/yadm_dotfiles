@@ -134,3 +134,6 @@ optional_source "$HOME/bash_completion.d/gradle-completion.bash"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 optional_source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Source general completions
+for f in "$HOME"/.bash_completions/*.sh; do source "$f"; done;
