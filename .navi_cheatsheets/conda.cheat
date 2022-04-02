@@ -1,0 +1,8 @@
+% conda, python, miniconda, remove, clean
+
+# https://docs.continuum.io/anaconda/install/uninstall/
+# Remove conda/miniconda completely
+
+rm -rf ~/.miniconda3
+echo " ----> now you need to remove the respective entry from your"
+echo "       ~/.bashrc"

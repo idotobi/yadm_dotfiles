@@ -1,0 +1,16 @@
+% git, clean, reset, .gitignore
+
+# Remove all untracked/ignored files
+
+git clean -dfx
+# -d also delete Directories
+# -f force to actually remove stuff
+# -x do not only remove ignored files but also untracked files
+#
+
+% git, config, global, safety
+
+# Ensure that only repo config is used when committing
+git config --global user.useconfigonly true
+git config --global --unset user.name
+git config --global --unset user.email

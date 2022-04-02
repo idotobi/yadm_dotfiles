@@ -1,0 +1,6 @@
+% mtu, trace, networking
+
+# Findout MTU to ip/host
+tracepath <ip>
+
+$ ip: echo 1.1.1.1

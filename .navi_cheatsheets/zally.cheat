@@ -1,0 +1,5 @@
+% zally, web, rest, api
+
+# start zally
+cd /home/hermannt/Documents/tools/zally/server
+./gradlew bootRun

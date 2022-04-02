@@ -1,0 +1,11 @@
+% npm, version, global, update
+
+# src: https://stackoverflow.com/a/54016445
+# (regardless of system package manager)
+# Update npm to the latest version globally
+
+sudo npm install npm -g
+echo ""
+echo "⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️"
+echo "  Do not forget to restart the shell session for the changes to take effect"
+echo "⚠️⚠️⚠️⚠️⚠️⚠️⚠️⚠️"

@@ -1,0 +1,10 @@
+% java, gradle, dependencies
+
+# Find package in dependency tree
+
+./gradlew dependencyInsight --dependency <needle>
+
+% java, gradle, init
+
+# Initialize gradle wrapper in new project
+gradle wrapper --gradle-version 7.4 --distribution-type=all
