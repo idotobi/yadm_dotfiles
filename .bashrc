@@ -91,7 +91,7 @@ nix-pill() { source "$HOME/.nix-profile/etc/profile.d/nix.sh"; }
 svn-repair() { mv -n -- "$2" "$1" && svn mv -- "$1" "$2"; }
 
 venv_dir="$HOME/.virtualenvironment"
-if [ -d venv_dir ]
+if [ -d "$venv_dir" ]
 then
   complete -W "$(ls $venv_dir)" -- vact
   vact() { source "$venv_dir/$1/bin/activate"; }
