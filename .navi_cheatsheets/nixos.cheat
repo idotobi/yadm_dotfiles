@@ -35,3 +35,7 @@ nix-store --query --referrers-closure <lib>
 $ lib: find /nix/store -maxdepth 1 -type d -print | fzf --preview ""
 
 
+% goto, profile, nix, env
+
+# Go to nix profile of current user
+cd /nix/var/nix/profiles/per-user/$USER
