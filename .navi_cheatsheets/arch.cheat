@@ -1,0 +1,38 @@
+% arch, pacman, package, management, cleanup
+
+# Pacman remove all orphan packages
+pacman -Rn $(pacman -Qdtq)
+
+
+% arch, pacman, info, list, package, management
+
+# Pacman list all explicitly installed packages
+sudo pacman -Qet | less
+
+
+% arch, pacman, info, list, package, management
+
+# Pacman list all installed packages
+pacman -Q | fzf --preview "echo {} | cut -f 1 -d ' ' | xargs pactree -r"
+
+
+% arch, pacman, info, list, package, management, dependencies
+
+# Get the referrers of a installed package
+pactree -r <package>
+
+$ package: pacman -Q | fzf --preview "echo {} | cut -f 1 -d ' ' | xargs pactree -r"
+
+
+% arch, pacman, info, list, package, management, cleanup, cache
+
+# Pacman remove old packages from cache (apart from last 3)
+sudo paccache -r
+
+
+% arch, pacman, info, list, package, management, downgrade, cache
+
+# Pacman downgrade to cached library version
+sudo pacman -U "file://<cached_package>"
+
+$ cached_package: ls /var/cache/pacman/pkg/*.pkg.tar.zst | fzf --preview ""
