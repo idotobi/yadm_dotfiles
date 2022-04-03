@@ -1,0 +1,37 @@
+% nixos, rebuild, config
+
+# Rebuild from config
+nixos-rebuild switch
+
+
+% nixos, update, channel
+
+# Update List of packages from channel
+sudo nix-channel --update
+
+% nix, store, roots
+
+# Get the roots for the nix dependency graph
+sudo nix-store --gc --print-roots | less
+
+
+% nix, store, garbage, collection
+
+# Clean up the nix store (carefully)
+sudo nix-store --gc
+
+
+% nix, store, garbage, collection, clean, env
+
+# Collect garbage and delete profiles older than 14d
+sudo nix-collect-garbage --delete-older-than 14d
+
+
+% nix, store, find, dependency, 
+
+# Find all referrers directly or indirectly depending on library <lib>
+nix-store --query --referrers-closure <lib>
+
+$ lib: find /nix/store -maxdepth 1 -type d -print | fzf --preview ""
+
+
