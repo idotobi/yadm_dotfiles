@@ -1,0 +1,7 @@
+% aws, debugging, cache, s3, codebuild
+
+# Find File in s3 codebuild cache
+cat codebuild.json | jq '.content.files | map(.path == "<path>") | index(true)'
+
+$ path: cat codebuild.json | jq -r '.content.files[].path'
+
