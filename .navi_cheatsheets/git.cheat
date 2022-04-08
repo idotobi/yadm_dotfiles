@@ -14,3 +14,8 @@ git clean -dfx
 git config --global user.useconfigonly true
 git config --global --unset user.name
 git config --global --unset user.email
+
+
+% git, code, signing, gpg, pgp
+# Turn off code signing for this repo
+git config commit.gpgsign false
