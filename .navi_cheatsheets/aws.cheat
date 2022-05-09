@@ -24,3 +24,13 @@ curl --header 'Connection: keep-alive' \
     sort |
     uniq |
     less
+
+
+% aws, cloudtrail, cloudformation, cloudfront, error, events, log, us-east-1
+
+# Get all errors from the last 1000 cloudtrail events from CloudFormation in us-east-1
+aws cloudtrail --region us-east-1  \
+  lookup-events \
+    --max-results 1000 \
+    --lookup-attributes AttributeKey=Username,AttributeValue=AWSCloudFormation \
+  | jq '.Events | map(.CloudTrailEvent | fromjson | select(.errorCode) | {eventName, eventTime, errorCode, errorMessage})'
