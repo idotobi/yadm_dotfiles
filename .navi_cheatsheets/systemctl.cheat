@@ -1,0 +1,6 @@
+% systemctl, journalctl, logs
+
+# Get most resent logs for a service
+sudo journalctl -ru <unit>
+
+$ unit: systemctl list-units -o json | jq -r 'map(.unit) | .[]' | rg service
