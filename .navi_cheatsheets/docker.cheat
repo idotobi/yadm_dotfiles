@@ -1,0 +1,13 @@
+% docker, purge, containers
+
+# Purge all containers
+docker rm $(docker container ls -aq)
+
+; -a all
+; -q only ids
+
+
+% docker, purge, images
+
+#Purge all images
+docker rmi $(docker image ls -aq)

@@ -1,0 +1,3 @@
+% list, installed, local, packages, libraries
+# List all package versions that you have locally
+apt list --installed -a

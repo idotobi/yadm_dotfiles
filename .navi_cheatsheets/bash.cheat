@@ -1,0 +1,4 @@
+% bash, exit, code
+
+# Get bash exit code of last command
+echo $?
