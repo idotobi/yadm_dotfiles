@@ -11,9 +11,27 @@
 gradle wrapper --gradle-version 7.4 --distribution-type=all
 
 
-% java, dependency, check, fix
+% java, gradle, dependency, check, fix
 
 # fix broken dependency check database
 ; Manual way
 ; rm -r ~/.gradle/dependency-check-data
 ./gradlew dependencyCheckPurge
+
+
+% java, maven, mvn, clean, install
+
+# Install maven project with error stacktraces
+mvn clean install -e
+
+
+% java, maven, mvn, dependency, check, owasp, vulnerability
+
+# Check maven installation for vulnerabilities
+mvn dependency-check:check
+
+
+% java, maven, mvn, dependency, list, tree
+
+# List all tependencies
+mvn dependency:tree
