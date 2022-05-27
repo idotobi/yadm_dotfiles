@@ -122,18 +122,9 @@ eval "$(starship init bash)"
 eval "$(navi widget bash)"
 optional_source "$HOME/.cargo/env"
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-optional_source "$NVM_DIR/nvm.sh"  # This loads nvm
-optional_source "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Enable gradlew autocompletion
 # see https://github.com/gradle/gradle-completion
 optional_source "$HOME/bash_completion.d/gradle-completion.bash"
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-optional_source "$HOME/.sdkman/bin/sdkman-init.sh"
 
 # Source general completions
 completions_folder="$HOME/.bash_completions"
@@ -141,3 +132,8 @@ if [ -d "$completions_folder" ]
 then
   for f in "$completions_folder"/*.sh; do source "$f"; done;
 fi
+
+
+asdf_folder="$HOME/.asdf"
+optional_source "$asdf_folder/asdf.sh"
+optional_source "$asdf_folder/completions/asdf.bash"
