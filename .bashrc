@@ -137,3 +137,5 @@ fi
 asdf_folder="$HOME/.asdf"
 optional_source "$asdf_folder/asdf.sh"
 optional_source "$asdf_folder/completions/asdf.bash"
+# In case of AUR asdf installation
+optional_source /opt/asdf-vm/asdf.sh
