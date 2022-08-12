@@ -5,6 +5,13 @@
 ./gradlew dependencies | less
 
 
+% java, gradle, dependencies, flat
+
+# Get a flat unique list of all dependencies installed
+
+./gradlew dependencies | sed -n 's/.*--- \([^ ]*.*\)/\1/p' | sort | uniq
+
+
 % java, gradle, init
 
 # Initialize gradle wrapper in new project
