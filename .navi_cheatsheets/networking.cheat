@@ -3,4 +3,16 @@
 # Findout MTU to ip/host
 tracepath <ip>
 
-$ ip: echo 1.1.1.1
+$ ip: read -p "IP: " ip; echo $ip
+
+
+% ping, tcp, port, syn, networking
+
+# "Ping" a tcp port with SYN packages
+nc -zv <ip> <port>
+
+; -z only scan
+; -v verbose
+
+$ ip: read -p "IP: " ip; echo $ip
+$ port: read -p "Port: " port; echo $port
