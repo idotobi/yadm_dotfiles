@@ -36,3 +36,9 @@ sudo paccache -r
 sudo pacman -U "file://<cached_package>"
 
 $ cached_package: ls /var/cache/pacman/pkg/*.pkg.tar.zst | fzf --preview ""
+
+
+% arch, pacman, corrupted, common-error, fix, update
+
+# Fix issues with upgrading due to outdated keyring
+sudo pacman -Sy archlinux-keyring
