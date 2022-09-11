@@ -1,0 +1,6 @@
+% bash, qr, code, generate
+
+# Generate qr code in terminal using utf8 characters
+qrencode -t utf8 <input>
+
+$ input: read -p "Input: " input; echo $input
