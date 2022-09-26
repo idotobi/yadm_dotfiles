@@ -6,7 +6,22 @@ git clean -dfx
 # -d also delete Directories
 # -f force to actually remove stuff
 # -x do not only remove ignored files but also untracked files
-#
+
+
+% git, clean, remove, delete, branch
+
+# Delete a remote tracking branch only locally
+git branch -r -d <branch>
+
+$ branch:  git branch -r | fzf
+
+% git, clean, remove, delete, branch
+
+# Delete a local branch
+git branch -d <branch>
+
+$ branch:  git branch | fzf
+
 
 % git, config, global, safety
 
