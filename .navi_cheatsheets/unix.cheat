@@ -1,0 +1,5 @@
+% time, calendar, weeks
+
+# Get calendar week of today
+date "+Calendar Week: %V"
+; based on ISO (Week starts with Monday)
