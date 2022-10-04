@@ -26,6 +26,12 @@ gradle wrapper --gradle-version 7.4 --distribution-type=all
 ./gradlew dependencyCheckPurge
 
 
+% java, gradle, clear, clean, cache
+
+# Remove gradle cache
+rm -rf ~/.gradle/caches
+
+
 % java, maven, mvn, clean, install
 
 # Install maven project with error stacktraces
