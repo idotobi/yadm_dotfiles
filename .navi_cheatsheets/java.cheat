@@ -25,6 +25,11 @@ gradle wrapper --gradle-version 7.4 --distribution-type=all
 ; rm -r ~/.gradle/dependency-check-data
 ./gradlew dependencyCheckPurge
 
+% java, gradle, dependency, check, analyze, owasp
+
+# Run owasp-dependency-check analyze
+./gradlew dependencyCheckAnalyze
+
 
 % java, gradle, clear, clean, cache
 
