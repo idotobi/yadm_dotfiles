@@ -2,7 +2,7 @@
 
 # Find package in dependency tree
 
-./gradlew dependencies | less
+./gradlew dependencies | cat | less
 
 
 % java, gradle, dependencies, flat
