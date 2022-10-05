@@ -17,6 +17,11 @@
 # Initialize gradle wrapper in new project
 gradle wrapper --gradle-version 7.4 --distribution-type=all
 
+% java, gradle, dependency, check, fix, lock, file, db
+
+# Remove Lock file for dependency check db
+killall --interactive -regexp gradle.*dependencyCheckAnalyze
+rm owasp-dependency-check/database/jsrepository.json.lock
 
 % java, gradle, dependency, check, fix
 
