@@ -2,6 +2,8 @@
 # ~/.bashrc
 #
 
+# set -x
+
 # vim mode
 set -o vi
 
@@ -58,7 +60,7 @@ function log_line {
 
 export PROMPT_COMMAND='timer_stop; log_line'
 
-export PATH=$PATH:~/bin:~/.local/bin:~/scripts
+export PATH=$PATH:~/bin:~/.local/bin:~/scripts:~/go/bin
 
 
 optional_source /usr/share/bash-completion/bash_completion
@@ -102,10 +104,6 @@ function bats-all {
   BATS_RUN_SKIPPED=true bats ./*_test.sh
 }
 
-# activate the fuck 
-# https://github.com/nvbn/thefuck
-eval "$(thefuck --alias)"
-
 # Set ccache as default
 export PATH="/usr/lib/ccache/bin/:$PATH"
 
@@ -139,3 +137,23 @@ optional_source "$asdf_folder/asdf.sh"
 optional_source "$asdf_folder/completions/asdf.bash"
 # In case of AUR asdf installation
 optional_source /opt/asdf-vm/asdf.sh
+
+# Alias for Localstack usage
+## aws default profile needs to be configured according to
+## https://docs.localstack.cloud/integrations/aws-cli/#setting-up-local-region-and-credentials-to-run-localstack
+alias awslocal="aws --endpoint-url=${LOCALSTACK_HOST:-http://localhost:4566}"
+# enable bash-completion for awslocal alias
+complete -C aws_completer awslocal
+complete -C aws_completer aws
+
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.bash ] && . "$HOME/.config/tabtab/__tabtab.bash" || true
+
+export PATH="$HOME/.custom_bin:$PATH"
+export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
+# Flutter
+export PATH="$HOME/Documents/private/projects/alite/development/flutter/bin:$PATH"
