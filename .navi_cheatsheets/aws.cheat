@@ -34,3 +34,11 @@ aws cloudtrail --region us-east-1  \
     --max-results 1000 \
     --lookup-attributes AttributeKey=Username,AttributeValue=AWSCloudFormation \
   | jq '.Events | map(.CloudTrailEvent | fromjson | select(.errorCode) | {eventName, eventTime, errorCode, errorMessage})'
+
+
+% aws, profile, set
+
+# Select one of the configured aws profiles for the current shell
+export AWS_PROFILE="<profile>"
+
+$ profile: aws configure list-profiles | fzf

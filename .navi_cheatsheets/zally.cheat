@@ -1,5 +1,11 @@
+% swagger, openapi, web, rest, documentation, render
+
+# start swagger-editor
+docker run -p 8080:8080 swaggerapi/swagger-editor
+
+
 % zally, web, rest, api
 
 # start zally
-cd /home/hermannt/Documents/tools/zally/server
+cd ~/Documents/tools/zally/server
 ./gradlew bootRun

@@ -3,3 +3,10 @@
 # Get calendar week of today
 date "+Calendar Week: %V"
 ; based on ISO (Week starts with Monday)
+
+
+% audio, process, access, microphone
+
+# Check which processes are currently accessing your microphone
+lsof /dev/snd/*
+

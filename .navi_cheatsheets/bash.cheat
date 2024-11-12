@@ -2,3 +2,8 @@
 
 # Get bash exit code of last command
 echo $?
+
+% bash, random, security, password, number
+
+# Get some random unsigned numbers from /dev/urandom
+od -A n -t u -N 100 /dev/urandom

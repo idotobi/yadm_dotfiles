@@ -1,7 +1,5 @@
 % git, clean, reset, .gitignore
-
 # Remove all untracked/ignored files
-
 git clean -dfx
 # -d also delete Directories
 # -f force to actually remove stuff
@@ -9,22 +7,19 @@ git clean -dfx
 
 
 % git, clean, remove, delete, branch
-
 # Delete a remote tracking branch only locally
-git branch -r -d <branch>
+git branch -r -d <remote_branch>
 
-$ branch:  git branch -r | fzf
+$ remote_branch:  git branch -r | fzf
+
 
 % git, clean, remove, delete, branch
-
 # Delete a local branch
 git branch -d <branch>
 
 $ branch:  git branch | fzf
 
-
 % git, config, global, safety
-
 # Ensure that only repo config is used when committing
 git config --global user.useconfigonly true
 git config --global --unset user.name

@@ -11,3 +11,18 @@ docker rm $(docker container ls -aq)
 
 #Purge all images
 docker rmi $(docker image ls -aq)
+
+
+% docker, purge, container
+# Purge all containers belonging to a specific image
+docker rm $(docker ps -aqf ancestor=<image>)
+
+$ image: docker image list --format "{{.Repository}}:{{.Tag}}" | uniq | sort | fzf
+
+
+% root, sudo, docker, purge, containers
+
+# Root: Purge all containers by image
+sudo docker rm $(docker ps -aqf ancestor=<image>)
+
+$ image: sudo docker image list -a --format "{{.Repository}}:{{.Tag}}" | uniq | sort | fzf

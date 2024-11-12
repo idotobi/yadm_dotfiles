@@ -1,0 +1,7 @@
+% sound, alsa, mic, mike, test, microphone
+
+# Test your mike setup with a 3 second recording and playback
+tempfile=$(mktemp /tmp/test-mic.XXXXXX.wav)
+arecord --duration=3 --format=dat "$tempfile"
+aplay "$tempfile"
+rm "$tempfile"

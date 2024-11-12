@@ -1,3 +1,17 @@
 % list, installed, local, packages, libraries
 # List all package versions that you have locally
 apt list --installed -a
+
+
+% list, installed, local, packages, libraries
+# list installed packges sorted by size
+dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n -r | head -n 100
+
+% work, time, session, start, pauses
+# Check when your work session of the day satarted by getting the login logs
+journalctl -b | rg "DISPLAY_METRICS_CHANGED|gdm-password"
+
+% work, time, session, end
+# Check when your work session yesterday ended
+journalctl -b-1 | tail
+

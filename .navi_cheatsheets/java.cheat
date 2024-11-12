@@ -17,11 +17,14 @@
 # Initialize gradle wrapper in new project
 gradle wrapper --gradle-version 7.4 --distribution-type=all
 
+
 % java, gradle, dependency, check, fix, lock, file, db
 
 # Remove Lock file for dependency check db
 killall --interactive -regexp gradle.*dependencyCheckAnalyze
 rm owasp-dependency-check/database/jsrepository.json.lock
+rm -r ~/.gradle/dependency-check-data/*
+
 
 % java, gradle, dependency, check, fix
 
@@ -30,10 +33,19 @@ rm owasp-dependency-check/database/jsrepository.json.lock
 ; rm -r ~/.gradle/dependency-check-data
 ./gradlew dependencyCheckPurge
 
+
 % java, gradle, dependency, check, analyze, owasp
 
 # Run owasp-dependency-check analyze
 ./gradlew dependencyCheckAnalyze
+
+
+% java, gradle, dependency, insights, debug
+
+# Findout why a dependency is included and why a particular version was chosen
+./gradlew dependencyInsight --dependency 
+
+$ dependency:  read -p "dependency: " dependency; echo $dependency
 
 
 % java, gradle, clear, clean, cache
