@@ -21,6 +21,7 @@ finder:
 cheats:
   paths: 
     - ~/.navi_cheatsheets
+    - ~/.navi_work_cheatsheets
     # - /path/to/another/dir
   # path: /path/to/some/dir # (DEPRECATED) equivalent to the --path option
 

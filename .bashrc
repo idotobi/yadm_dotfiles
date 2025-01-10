@@ -157,3 +157,8 @@ export PATH="$HOME/.custom_bin:$PATH"
 export DOCKER_HOST="unix://$XDG_RUNTIME_DIR/podman/podman.sock"
 # Flutter
 export PATH="$HOME/Documents/private/projects/alite/development/flutter/bin:$PATH"
+
+# limit jest workers to 4 to mitigate OOM due to too many workers
+alias npm="taskset -c 0-4 npm"
+# limit maximum workers in vitest
+export VITEST_MAX_THREADS=4
